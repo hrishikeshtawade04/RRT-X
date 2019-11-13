@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 # Overview
 
 RRT-X Dynamic obstacle avoidance algorithm (developed by Michael Otte, MIT 2014) 
