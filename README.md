@@ -1,3 +1,5 @@
+# Overview
+
 RRT-X Dynamic obstacle avoidance algorithm (developed by Michael Otte, MIT 2014) 
 
 For more details kindly refer to the paper  
@@ -5,8 +7,6 @@ For more details kindly refer to the paper
 with Unpredictable Obstacles," 
 WAFR 2014, 
 Michael Otte and Emilio Frazzoli
-
-# Overview
 
 - The code was initially written in the Julia language (http://julialang.org/) by Professor Michael Otte. 
 - Sharan Nayak worked on making it compatible to newer Julia versions (https://gitlab.com/Otte-Lab) 
