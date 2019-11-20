@@ -10,92 +10,138 @@
  * 
  */
 
+// Read Queue
+
 #include <iostream>
+#include <deque> // gives more flexibility
+#include <array>
+#include <cmath>
 
 using std::endl;
 using std::cout;
+using std::deque;
 
 template <typename T>
 class ListNode{
     public:
-    ListNode child; //Ask professor
-    T data; // This will be of different type
-    float key;
-    // Constructor
-    ListNode();
+    T data; 
+    float key = std::nan("1"); // check with professor
+    /**Line 49**/
 };
 
-template <typename T>
+template <typename T>//
 class List{
     public:
-    ListNode<T> front; //Ask professor
-    int length;
-
-    List(){
-        ListNode<T> endNode; //T is for data
-        endNode.child = endNode; //linked list formation check
-        /**Line 49**/
-    }
+    deque <ListNode<T>> list;
+    int length = 0;
 };
 
-template <typename T, typename TS>
-void listPush(T list,TS data){
 
+template <typename T>//
+void listPush(List<T>& list,T data){ // Why 2 different types when restricted above
+    ListNode<T> newNode; 
+    newNode.data = data;
+    list.list.push_front(newNode);
+    list.length = list.list.size(); 
 }
 
-template <typename T, typename TS>
-void listPush(T list,TS data, float Key){
-    
+// Overrided
+template <typename T> 
+void listPush(List<T>& list,T data, float key){
+    ListNode<T> newNode; 
+    newNode.data = data;
+    newNode.key = key;
+    list.list.push_front(newNode); 
+    list.length = list.list.size();
 }
 
-template <typename TS>
-void listTop(TS list){
-    
+template <typename T>
+T listTop(List<T>& list){ //
+    if (!list.list.empty()) {
+        return list.list.front().data; // Verify that youngest object in queue
+    }
+     
+}
+
+template <typename T>
+ListNode<T> listTopKey(List<T>& list){ 
+    if (!list.list.empty()) {
+        return (list.list.front()); // should I return object? 
+    }    
+}
+
+template <typename T> // Tested with listEmpty
+T listPop(List<T>& list){
+    if (!list.list.empty()) {
+        ListNode<T> oldTop;
+        oldTop = list.list.front();
+        list.list.pop_front();
+        list.length = list.list.size();
+        return oldTop.data;
+    } 
+}
+
+template <typename T>
+void listEmpty(List<T>& list){   //
+    while(!list.list.empty())
+        listPop(list);
 }
 
 
-template <typename TS>
-void listTopKey(TS list){
-    
+template <typename T> //
+ListNode<T> listPopKey(List<T>& list){
+    if (!list.list.empty()) {
+        ListNode<T> oldTop;
+        oldTop = list.list.front();
+        list.list.pop_front();
+        list.length = list.list.size();
+        return oldTop;
+    } 
 }
-
-
-template <typename TS>
-void listPop(TS list){
-    
-}
-
-
-template <typename TS>
-void listPopKey(TS list){
-    
-}
-
+/** Ask professor
 
 template <typename TS>
 void listPrint(TS list){
-    
+    if (!list.list.empty())
+        for (auto it = list.list.begin(); it != list.list.end(); ++it) 
+            cout << ' ' << std::type((*it).data); 
+    else
+        cout << "Empty";
 }
-
-
-template <typename TS>
-void listEmpty(TS list){
-    
-}
-
-
-template <typename TS, typename TN>
-void listCopyGuts(TS list, TN nodeExample){
-    
-}
+**/
 
 void testCase(){
-    cout << "Test case Here" << endl;
+    List<std::array<int, 3>> L;
+    //List<std::array<int, 3>> L;
+    std::array<int, 3> a{ {1, 1, 1} };
+    std::array<int, 3> b{ {2, 2, 2} };
+    std::array<int, 3> c{ {3, 3, 3} };
+    std::array<int, 3> d{{0,0,0}};
+    ListNode<std::array<int, 3>> testNode;
+
+    listPush(L,a);
+    
+    d = listTop(L);
+    cout << "Top = " << d[0] << " " << d[1] << " " << d[2] << endl;
+    
+    listPush(L,b,1);
+    
+    testNode = listTopKey(L);
+    cout << "Key = " << testNode.key << endl;
+    
+    testNode = listPopKey(L);
+    cout << "Popped Node key= " << testNode.key << endl;
+    
+    listPush(L,c);
+    d = listTop(L);
+    cout << "Top = " << d[0] << " " << d[1] << " " << d[2] << endl;
+
+    cout << "List length = " << L.length << endl;
+    cout << "List length = " << L.length << endl;
+    listEmpty(L);
+    cout << "List length = " << L.length << endl;
+
 }
-
-
-
-
 
 
 int main(){
