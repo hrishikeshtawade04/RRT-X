@@ -38,7 +38,7 @@ class List{
 
 
 template <typename T>//
-void listPush(List<T>& list,T data){ // Why 2 different types when restricted above
+void listPush(List<T>& list,T data){ 
     ListNode<T> newNode; 
     newNode.data = data;
     list.list.push_front(newNode);
@@ -58,7 +58,7 @@ void listPush(List<T>& list,T data, float key){
 template <typename T>
 T listTop(List<T>& list){ //
     if (!list.list.empty()) {
-        return list.list.front().data; // Verify that youngest object in queue
+        return list.list.front().data; 
     }
      
 }
@@ -66,7 +66,7 @@ T listTop(List<T>& list){ //
 template <typename T>
 ListNode<T> listTopKey(List<T>& list){ 
     if (!list.list.empty()) {
-        return (list.list.front()); // should I return object? 
+        return (list.list.front()); 
     }    
 }
 
@@ -98,18 +98,6 @@ ListNode<T> listPopKey(List<T>& list){
         return oldTop;
     } 
 }
-/** Ask professor
-
-template <typename TS>
-void listPrint(TS list){
-    if (!list.list.empty())
-        for (auto it = list.list.begin(); it != list.list.end(); ++it) 
-            cout << ' ' << std::type((*it).data); 
-    else
-        cout << "Empty";
-}
-**/
-
 void testCase(){
     List<std::array<int, 3>> L;
     //List<std::array<int, 3>> L;
