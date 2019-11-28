@@ -131,7 +131,6 @@ void testCase(){
 
 }
 
-
 int main(){
     testCase();
     return 0;
