@@ -27,55 +27,63 @@ class HeapNode{
 };
 // returns the key value of the node
 template <typename T>
-T keyDefault(T node){return node.data;}
+T keyDefault(HeapNode<T> node){return node.data;}
 
 // less than function
 template <typename T>
-bool lessThanDefault(T a, T b) {return a.data < b.data;}
+bool lessThanDefault(HeapNode<T> a, HeapNode<T> b) {return a.data < b.data;}
 
 // default greater than function
 template <typename T>
-bool greaterThanDefault(T a, T b){return a.data > b.data;}
+bool greaterThanDefault(HeapNode<T> a, HeapNode<T> b){return a.data > b.data;}
 
 // default heap marker function (marks when a node is in the heap)
 template <typename T>
-void markDefault(T node) {node.inHeap = true;}
+void markDefault(HeapNode<T> node) {node.inHeap = true;}
 
 // default heap unmarker function (un marks when a node is removed)
 template <typename T>
-void unmarkDefault(T node){ node.inHeap = false;}
+void unmarkDefault(HeapNode<T> node){ node.inHeap = false;}
 
 // default heap check marker function (checks if the node is marked)
 template <typename T>
-bool markedDefault(T node){ return node.inHeap;}
+bool markedDefault(HeapNode<T> node){ return node.inHeap;}
 
 // sets the heap index to the value
 template <typename T>
-void setIndexDefault(T node, int val){ node.heapIndex = val;}
+void setIndexDefault(HeapNode<T> node, int val){ node.heapIndex = val;}
 
 // set the heap index to the unused value
 template <typename T>
-void unsetIndexDefault(T node) {node.heapIndex = -1;}
+void unsetIndexDefault(HeapNode<T> node) {node.heapIndex = -1;}
 
 // returns the heap index
 template <typename T>
-int getIndexDefault(T node){return node.heapIndex;}
+int getIndexDefault(HeapNode<T> node){return node.heapIndex;}
 
-template <typename T, typename TK>
+template <typename T>
+void swap(HeapNode<T> *x, HeapNode<T> *y) 
+{ 
+    HeapNode<T> temp = *x; 
+    *x = *y; 
+    *y = temp; 
+} 
+
+template <typename T> //, typename TK>
 class BinaryHeap{
     HeapNode<T> heapNode[];
     int indexOfLast;
     int parentOfLast;
     // Functions used for interacting with marks and indices.
-    T (*key)(T node);
-    bool (*lessThan)(T,T);
-    bool (*greaterThan)(T,T);
-    void (*mark)(T);
-    void (*unmark)(T);
-    bool (*marked)(T);
-    void (*setIndex)(T, int);
-    void (*unsetIndex)(T);
-    int (*getIndex)(T);
+    T (*key)(HeapNode<T> node);
+    bool (*lessThan)(HeapNode<T>,HeapNode<T>);
+    bool (*greaterThan)(HeapNode<T>,HeapNode<T>);
+    void (*mark)(HeapNode<T>);
+    void (*unmark)(HeapNode<T>);
+    bool (*marked)(HeapNode<T>);
+    void (*setIndex)(HeapNode<T>, int);
+    void (*unsetIndex)(HeapNode<T>);
+    int (*getIndex)(HeapNode<T>);
     
     /**
     //Constructor
@@ -95,9 +103,9 @@ class BinaryHeap{
         getIndex = getIndexDefault;
     }
 **/
-    BinaryHeap(T (*keyarg)(T node) = keyDefault, bool (*lessThanarg)(T,T) = lessThanDefault, bool (*greaterThanarg)(T,T) = greaterThanDefault,
-    void (*markarg)(T) = markDefault, void (*unmarkarg)(T) = unmarkDefault, bool (*markedarg)(T) = markedDefault, void (*setIndexarg)(T, int) = setIndexDefault, 
-    void (*unsetIndexarg)(T) = unsetIndexDefault, int (*getIndexarg)(T) = getIndexDefault,const int maxSize = 64){
+    BinaryHeap(T (*keyarg)(HeapNode<T> node) = keyDefault, bool (*lessThanarg)(HeapNode<T>,HeapNode<T>) = lessThanDefault, bool (*greaterThanarg)(HeapNode<T>,HeapNode<T>) = greaterThanDefault,
+    void (*markarg)(HeapNode<T>) = markDefault, void (*unmarkarg)(HeapNode<T>) = unmarkDefault, bool (*markedarg)(HeapNode<T>) = markedDefault, void (*setIndexarg)(HeapNode<T>, int) = setIndexDefault, 
+    void (*unsetIndexarg)(HeapNode<T>) = unsetIndexDefault, int (*getIndexarg)(HeapNode<T>) = getIndexDefault,const int maxSize = 64){
         HeapNode<T> H[maxSize];
         heapNode = H; //since we want to start indexing from 1
         indexOfLast = 0;
@@ -114,8 +122,22 @@ class BinaryHeap{
     }
 
 };
+int parent(int i) { return i/2;} 
+  
+// to get index of left child of node at index i 
+int left(int i) { return (2*i); } // considering starting index 1
 
+// to get index of right child of node at index i 
+int right(int i) { return (2*i + 1); } // considering starting index 1
 
+/**
+template <typename T>
+void bubbleUp(BinaryHeap<T> H, int n){
+    if(n!=1){
+        while(n!=1 && H.greaterThan(H.heapNode[parent(n)], H.heapNode[n]))
+    }
+}
+**/
 void testcase(){
     cout << "Test case pending" << endl;
 }
