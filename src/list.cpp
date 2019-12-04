@@ -16,25 +16,13 @@
 #include <deque> // gives more flexibility
 #include <array>
 #include <cmath>
+#include "list.h"
 
 using std::endl;
 using std::cout;
 using std::deque;
 
-template <typename T>
-class ListNode{
-    public:
-    T data; 
-    float key = std::nan("1"); // check with professor
-    /**Line 49**/
-};
 
-template <typename T>//
-class List{
-    public:
-    deque <ListNode<T>> list;
-    int length = 0;
-};
 
 
 template <typename T>//

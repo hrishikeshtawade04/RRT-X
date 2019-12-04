@@ -13,19 +13,12 @@
 #include <cmath>
 #include <vector>
 #include <array>
+#include "heap.h"
 
 using std::endl;
 using std::cout;
 
-template <typename T>
-class HeapNode{
-    public:
-    T data;
-    int heapIndex;
-    bool inHeap;
 
-    HeapNode():heapIndex{-1},inHeap{false}{} // check if data removed works
-};
 // returns the key value of the node
 template <typename T>
 T keyDefault(HeapNode<T> node){return node.data;}
@@ -70,63 +63,7 @@ void swap(HeapNode<T> *x, HeapNode<T> *y)
     *y = temp; 
 } 
 
-template <typename T> //, typename TK>
-class BinaryHeap{
-    public:
-    std::vector<HeapNode<T>> heapNode;
-    int indexOfLast;
-    int parentOfLast;
-    // Functions used for interacting with marks and indices.
-    T (*key)(HeapNode<T> node);
-    bool (*lessThan)(HeapNode<T>,HeapNode<T>);
-    bool (*greaterThan)(HeapNode<T>,HeapNode<T>);
-    void (*mark)(HeapNode<T>&);
-    void (*unmark)(HeapNode<T>&);
-    bool (*marked)(HeapNode<T>&);
-    void (*setIndex)(HeapNode<T>&, int);
-    void (*unsetIndex)(HeapNode<T>&);
-    int (*getIndex)(HeapNode<T>);
-    
 
-    //Constructor
-    BinaryHeap(const int maxSize = 64){
-        std::vector<HeapNode<T>> H(maxSize+1);
-        heapNode = H; //since we want to start indexing from 1
-        indexOfLast = 0;
-        parentOfLast = -1;
-        key = keyDefault;
-        lessThan = lessThanDefault;
-        greaterThan = greaterThanDefault;
-        mark = markDefault;
-        unmark = unmarkDefault;
-        marked = markedDefault;
-        setIndex = setIndexDefault;
-        unsetIndex = unsetIndexDefault;
-        getIndex = getIndexDefault;
-    }
-
-    
-    BinaryHeap(T (*keyarg)(HeapNode<T> node) = keyDefault, bool (*lessThanarg)(HeapNode<T>,HeapNode<T>) = lessThanDefault, 
-    bool (*greaterThanarg)(HeapNode<T>,HeapNode<T>) = greaterThanDefault,void (*markarg)(HeapNode<T>&) = markDefault, 
-    void (*unmarkarg)(HeapNode<T>&) = unmarkDefault, bool (*markedarg)(HeapNode<T>&) = markedDefault, 
-    void (*setIndexarg)(HeapNode<T>&, int) = setIndexDefault, void (*unsetIndexarg)(HeapNode<T>&) = unsetIndexDefault, 
-    int (*getIndexarg)(HeapNode<T>) = getIndexDefault,const int maxSize = 64){
-        std::vector<HeapNode<T>> H(maxSize+1); // since we want to start indexing from 1
-        heapNode = H; 
-        indexOfLast = 0;
-        parentOfLast = -1;
-        key = keyarg;
-        lessThan = lessThanarg ;
-        greaterThan = greaterThanarg;
-        mark = markarg;
-        unmark = unmarkarg;
-        marked = markedarg;
-        setIndex = setIndexarg;
-        unsetIndex = unsetIndexarg;
-        getIndex = getIndexarg;
-    }
-    
-};
 int parent(int i) { return i/2;} 
   
 // to get index of left child of node at index i 
