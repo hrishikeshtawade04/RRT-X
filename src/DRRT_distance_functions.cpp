@@ -13,6 +13,7 @@ float euclidianDist(vector<float> x ,vector<float> y){
     return sqrt(sum);
 }
 
+/*
 void testCase(){
     vector<float> x{7,4,3};
     vector<float> y{17,6,2};
@@ -23,3 +24,4 @@ int main(){
     testCase();
     return 0;
 }
+*/
