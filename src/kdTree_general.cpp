@@ -220,7 +220,7 @@ kdFindNearestInSubtree(float (*distanceFunction)(std::vector<float>, std::vector
 }
 
 float oneTwoDRobotDist(std::vector<float> poseA, std::vector<float> poseB){ //need to be generalized to higher dimensions 
-  return (sqrt(pow(poseA[2]-poseB[2],2)+ pow((poseA[1]-poseB[1]),2))); // 
+  return (sqrt(pow(poseA[0]-poseB[0],2)+ pow((poseA[1]-poseB[1]),2))); // 
 }
 
 
@@ -242,8 +242,9 @@ void testcase_kd(){
   
 }
 
-
+/*
 int main(){
     testcase_kd();
     return 0;
 }
+*/

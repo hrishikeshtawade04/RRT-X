@@ -66,11 +66,11 @@ void swap(HeapNode<T> *x, HeapNode<T> *y)
 
 int parent(int i) { return i/2;} 
   
-// to get index of left child of node at index i 
-int left(int i) { return (2*i); } // considering starting index 1
+// to get index of left_ child of node at index i 
+int left_(int i) { return (2*i); } // considering starting index 1
 
 // to get index of right child of node at index i 
-int right(int i) { return (2*i + 1); } // considering starting index 1
+int right_(int i) { return (2*i + 1); } // considering starting index 1
 
 
 template <typename T>
@@ -89,8 +89,8 @@ void bubbleUp(BinaryHeap<T> &H, int n){
 
 template <typename T>
 void bubbleDown(BinaryHeap<T> &H, int n){
-    int lefti = left(n);
-    int righti = right(n);
+    int lefti = left_(n);
+    int righti = right_(n);
     int smallest = n;
 
     // Finding the left is smaller or right
@@ -258,8 +258,8 @@ void bubbleUpB(BinaryHeap<T> &H, int n){
 
 template <typename T>
 void bubbleDownB(BinaryHeap<T> &H, int n){
-    int lefti = left(n);
-    int righti = right(n);
+    int lefti = left_(n);
+    int righti = right_(n);
     int largest = n;
 
     // Finding the left is smaller or right

@@ -99,8 +99,8 @@ class BinaryHeap{
 };
 
 int parent(int i);
-int left(int i);
-int right(int i);
+int left_(int i);
+int right_(int i);
 template <typename T>
 void bubbleUp(BinaryHeap<T> &H, int n);
 template <typename T>
