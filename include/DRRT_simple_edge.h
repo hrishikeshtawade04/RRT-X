@@ -5,7 +5,7 @@
 #include "list.h"
 
 template <typename T>
-class SimpleEdge{
+class Edge{
     T startNode;
     T endNode;
     float dist;  // the distance between startNode and endNode (i.e., how far the
@@ -16,16 +16,16 @@ class SimpleEdge{
     float distOriginal; // saves the original value of dist, so we don't need to
                         // recalculate if this edge is removed and then added again
 
-    ListNode<SimpleEdge<T>> *listItemInStartNode; // pointer to this edges location
+    ListNode<Edge<T>> *listItemInStartNode; // pointer to this edges location
                                                 // in startNode
 
-    ListNode<SimpleEdge<T>> *listItemInEndNode;   // pointer to this edges location
+    ListNode<Edge<T>> *listItemInEndNode;   // pointer to this edges location
                                                 // in endNode
 
     float Wdist; // this contains the distance that the robot must travel through
                  // the -workspace- along the edge (so far only used for time based
                  // c-spaces)
-    SimpleEdge(){}
+    Edge(){}
 };
 
 #endif

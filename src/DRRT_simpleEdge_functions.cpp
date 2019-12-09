@@ -64,8 +64,8 @@ void saturate(vector<float> &newPoint, vector<float> closestPoint, float delta){
 }
 
 template <typename T>
-SimpleEdge<T> newEdge(T startNode, T endNode){ 
-  SimpleEdge<T> E;
+Edge<T> newEdge(T startNode, T endNode){ 
+  Edge<T> E;
   E.startNode = startNode;
   E.endNode = endNode;
   return (E);
@@ -73,9 +73,9 @@ SimpleEdge<T> newEdge(T startNode, T endNode){
 
 // returns true if the dynamics of the robot and space allow a robot to follow the edge
 //
-//// SimpleEdge version  //checks BVP I think
+//// Edge version  //checks BVP I think
 template <typename T, typename TS>
-bool validMove(TS S, SimpleEdge<T> edge){
+bool validMove(TS S, Edge<T> edge){
     if (S.spaceHasTime){
         // note that planning happens in reverse time, i.e., time = 0 is at the root
         // of the search tree, and thus the time of startNode must be greater than
@@ -93,7 +93,7 @@ bool validMove(TS S, SimpleEdge<T> edge){
 //
 //// simple edge version
 template <typename T>
-std::vector<float> poseAtDistAlongEdge(SimpleEdge<T> edge, float distAlongEdge){ //check with professor the type
+std::vector<float> poseAtDistAlongEdge(Edge<T> edge, float distAlongEdge){ //check with professor the type
   if (edge.dist == 0.0)
     return (edge.endNode.position); //I think copy is not needed. check with professor.
 
@@ -110,7 +110,7 @@ std::vector<float> poseAtDistAlongEdge(SimpleEdge<T> edge, float distAlongEdge){
 //
 //// Simple Edge
 template <typename T> //check the type of the text iterator
-void saveEndOfTrajectory(std::ofstream filePtr, SimpleEdge<T> edge, float distFromFront){ 
+void saveEndOfTrajectory(std::ofstream filePtr, Edge<T> edge, float distFromFront){ 
   float ratioAlongEdge = distFromFront/edge.dist;
   vector<float> ret; 
   for(int i=0; i< edge.startNode.position.size(); i++){
@@ -126,7 +126,7 @@ void saveEndOfTrajectory(std::ofstream filePtr, SimpleEdge<T> edge, float distFr
 //
 //// simple edge version
 template <typename T>
-void saveEndOfTrajectoryTime(std::ofstream filePtr, SimpleEdge<T> edge, float timeFromFront) {
+void saveEndOfTrajectoryTime(std::ofstream filePtr, Edge<T> edge, float timeFromFront) {
   float ratioAlongEdge = timeFromFront/(edge.startNode.position[3] - edge.endNode.position[3]);
   vector<float> ret;
   for(int i=0; i< edge.startNode.position.size(); i++){
@@ -150,7 +150,7 @@ void saveEndOfTrajectoryTime(std::ofstream filePtr, SimpleEdge<T> edge, float ti
  // // basic version, trajectory is implicitly defined as straight path along line
  // // segment between edge.startNode and edge.endNode, Euclidian space is assumed
 template <typename T, typename TS>
-void calculateTrajectory(TS S, SimpleEdge<T> &edge){
+void calculateTrajectory(TS S, Edge<T> &edge){
   edge.dist = dist(edge.startNode, edge.endNode);
   edge.distOriginal = edge.dist;
   edge.Wdist = Wdist(edge.startNode, edge.endNode);
@@ -162,14 +162,14 @@ void calculateTrajectory(TS S, SimpleEdge<T> &edge){
  //
  // // simple edge version
 template <typename T, typename TS>
-void calculateHoverTrajectory(TS S, SimpleEdge<T> &edge) {
+void calculateHoverTrajectory(TS S, Edge<T> &edge) {
     calculateTrajectory(S, edge);
 }
  // // // this saves the trajectory that is stored in the edge to the file
  //
  // simple edge version
 template <typename T>
-void saveEdgeTrajectory(std::ofstream filePtr , SimpleEdge<T> edge) {
+void saveEdgeTrajectory(std::ofstream filePtr , Edge<T> edge) {
   for (const auto &e : edge.startNode.position) filePtr << e << ",";
   for (const auto &e : edge.endNode.position) filePtr << e << ",";
 }
@@ -184,9 +184,9 @@ void saveEdgeTrajectory(std::ofstream filePtr , SimpleEdge<T> edge) {
  // // // checks if the edge is in collision with a particular obstacle
  // // // (one version for each edge type)
  //
- // // SimpleEdge version
+ // // Edge version
 
-//explicitEdgeCheck(S::CSpace{T}, edge::SimpleEdge,
+//explicitEdgeCheck(S::CSpace{T}, edge::Edge,
 //obstacle::OT) where {T, OT} = explicitEdgeCheck2D(obstacle,
 //edge.startNode.position, edge.endNode.position, S.robotRadius)
 

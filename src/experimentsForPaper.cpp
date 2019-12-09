@@ -8,9 +8,9 @@
 #include "DRRT.h"
 #include <string>
 #include <fstream>
+#include <limits>
 
-
-//const Edge{T} = SimpleEdge{T}
+//const Edge{T} = SimpleEdge{T} // converted the edge directly instead
 
 using std::string;
 using std::ofstream;
@@ -45,20 +45,20 @@ void Static_2D_Debug(){
   ofstream expFile;
   //obstacleFile = "environments/empty.txt"
   system("MD experiments");
+  expFile.open("experiments/" + expName + ".txt");
+  
+  bool MoveRobot = false;
+  bool saveVideoData = true;
+
+  int d = 2;                // number of dimensions
+  int timeOut = std::numeric_limits<int>::max(); // a backup timeout in seconds
+  bool saveTree = true;      // if true then saves the tree in out.txt
+
+  vector<float> lowerBounds(d,-envRad);
+  vector<float> upperBounds(d,envRad);
+  cout << lowerBounds.size() << " " << lowerBounds[0] << lowerBounds[1] << endl; 
   
   /*
-  success(`mkdir experiments/$(expName)`)
-
-  MoveRobot = false
-  saveVideoData = true
-
-  d = 2                  # number of dimensions
-  timeOut = Inf          # a backup timeout in seconds
-  saveTree = true        # if true then saves the tree in out.txt
-
-  lowerBounds = -envRad*ones(1,d)
-  upperBounds = envRad*ones(1,d)
-
   C = CSpace{Float64}(d, -1.0, lowerBounds, upperBounds, start, goal)
 
   # init robot radii
