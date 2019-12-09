@@ -1,3 +1,6 @@
+#ifndef INCLUDE_DRRT_SIMPLEEDGE_FUNCTIONS_H_
+#define INCLUDE_DRRT_SIMPLEEDGE_FUNCTIONS_H_
+
 #include <iostream>
 #include <vector>
 #include "DRRT_simple_edge.h"
@@ -27,3 +30,5 @@ template <typename T, typename TS>
 void calculateHoverTrajectory(TS S, SimpleEdge<T> &edge);
 template <typename T>
 void saveEdgeTrajectory(std::ofstream filePtr , SimpleEdge<T> edge);
+void testCase_sef();
+#endif

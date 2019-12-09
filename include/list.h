@@ -1,3 +1,6 @@
+#ifndef INCLUDE_LIST_H_
+#define INCLUDE_LIST_H_
+
 #include <iostream>
 #include <deque> // gives more flexibility
 #include <array>
@@ -42,3 +45,7 @@ void listEmpty(List<T>& list);
 
 template <typename T> //
 ListNode<T> listPopKey(List<T>& list);
+
+void testCase_list();
+
+#endif  // INCLUDE_LIST_H_

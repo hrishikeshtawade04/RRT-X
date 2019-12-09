@@ -380,7 +380,7 @@ std::vector<HeapNode<T>> cleanHeapB(BinaryHeap<T> &H){
 
 
 
-void testcase(){
+void testcase_heap(){
     BinaryHeap<float> H(7);
     cout << "Size of heap  = " << H.heapNode.size() << endl; 
     for(int i = 1; i<8 ;i++){
@@ -403,6 +403,7 @@ void testcase(){
         poppedNode = popHeap(H);
     }
 }
+
 
 void testcaseB(){
     BinaryHeap<float> H(7);
@@ -428,10 +429,12 @@ void testcaseB(){
         poppedNode = popHeapB(H);
     }
 }
+
+/*
 int main(){
     //testcase();
     testcaseB();
     return 0;
 }
-
+*/
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <DRRT_distance_functions.h>
 
 using std::vector;
 using std::cout; 
@@ -13,13 +14,14 @@ float euclidianDist(vector<float> x ,vector<float> y){
     return sqrt(sum);
 }
 
-/*
-void testCase(){
+
+void testCase_drrtd(){
     vector<float> x{7,4,3};
     vector<float> y{17,6,2};
     cout << euclidianDist(x,y);
 }
 
+/*
 int main(){
     testCase();
     return 0;

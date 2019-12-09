@@ -1,3 +1,6 @@
+#ifndef INCLUDE_DRRT_SIMPLE_EDGE_H_
+#define INCLUDE_DRRT_SIMPLE_EDGE_H_
+
 #include <iostream>
 #include "list.h"
 
@@ -24,3 +27,5 @@ class SimpleEdge{
                  // c-spaces)
     SimpleEdge(){}
 };
+
+#endif

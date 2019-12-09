@@ -1,3 +1,6 @@
+#ifndef INCLUDE_HEAP_H_
+#define INCLUDE_HEAP_H_
+
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -140,8 +143,10 @@ template <typename T>
 bool checkHeapB(BinaryHeap<T> &H);
 template <typename T>
 std::vector<HeapNode<T>> cleanHeapB(BinaryHeap<T> &H);
+void testcase_heap();
+void testcaseB();
 
-
+#endif
 
 
 

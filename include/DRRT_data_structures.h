@@ -1,0 +1,6 @@
+#ifndef INCLUDE_DRRT_DATA_STRUCTURES_H_
+#define INCLUDE_DRRT_DATA_STRUCTURES_H_
+
+
+
+#endif

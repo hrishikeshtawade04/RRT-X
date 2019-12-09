@@ -1,6 +1,7 @@
  #include <iostream>
  #include <vector>
  #include "DRRT_distance_functions.h"
+ #include "DRRT_simpleEdge_functions.h"
  #include "DRRT_simple_edge.h"
  #include <fstream>
  #include <iterator>
@@ -189,14 +190,15 @@ void saveEdgeTrajectory(std::ofstream filePtr , SimpleEdge<T> edge) {
 //obstacle::OT) where {T, OT} = explicitEdgeCheck2D(obstacle,
 //edge.startNode.position, edge.endNode.position, S.robotRadius)
 
-/*
-void testCase(){
+
+void testCase_sef(){
     vector<float> x{7,4,3};
     vector<float> y{17,6,2};
     std::cout << Wdist(x,y) << std::endl;
     std::cout << KDdist(x,y) << std::endl;
     std::cout << dist(x,y) << std::endl;
 }
+/*
 int main(){
     testCase();
     return 0;

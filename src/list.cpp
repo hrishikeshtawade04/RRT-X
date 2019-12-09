@@ -86,7 +86,7 @@ ListNode<T> listPopKey(List<T>& list){
         return oldTop;
     } 
 }
-void testCase(){
+void testCase_list(){
     List<std::array<int, 3>> L;
     //List<std::array<int, 3>> L;
     std::array<int, 3> a{ {1, 1, 1} };
@@ -119,7 +119,9 @@ void testCase(){
 
 }
 
+/*
 int main(){
     testCase();
     return 0;
 }
+*/
