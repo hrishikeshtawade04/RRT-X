@@ -41,7 +41,6 @@ void Static_2D_Debug(){
   vector<float> start{0.0, -40.0};   // robot goes to here (start location of search tree)
   vector<float> goal{-40.0, 40.0};    // robot comes from here (goal location of search tree)
 
-  string obstacleFile = "environments/rand_Static.txt";
   ofstream expFile;
   //obstacleFile = "environments/empty.txt"
   system("MD experiments");
@@ -58,30 +57,36 @@ void Static_2D_Debug(){
   vector<float> upperBounds(d,envRad);
   cout << lowerBounds.size() << " " << lowerBounds[0] << lowerBounds[1] << endl; 
   
-  /*
-  C = CSpace{Float64}(d, -1.0, lowerBounds, upperBounds, start, goal)
+    
+  CSpace<float> C(d, -1.0, lowerBounds, upperBounds, start, goal);
 
-  # init robot radii
-  C.robotRadius =  robotRad
+  // init robot radii
+  C.robotRadius =  robotRad;
 
-  # init robot velocity
-  C.robotVelocity = 2.0
+  // init robot velocity
+  C.robotVelocity = 2.0;
 
-  # load obstacles
-  readDiscoverablecObstaclesFromfile(C, obstacleFile, 1)
+  string obstacleFile = "environments/rand_Static.txt";
 
-  # set up sampling function
-  C.randNode = randNodeOrFromStack # use this function to return random nodes
-  C.pGoal = .01
+  // load obstacles
+  vector<float> obstaclePosition{10,30};
+  Obstacle ob(1,obstaclePosition,0.5);
+  ob.senseableObstacle = false;
+  ob.obstacleUnusedAfterSense = false;
+  ob.obstacleUnused = false;
+  listPush(C.obstacles,ob);
+  
+ 
+  // set up sampling function
+  C.pGoal = .01; // sequence changed from original code
+  C.randNode = randNodeOrFromStack; // use this function to return random nodes
+  // space paramiters
+  C.spaceHasTime = false;
+  C.spaceHasTheta = false;
 
-  # space paramiters
-  C.spaceHasTime = false
-  C.spaceHasTheta = false
+  string dataFile = "experiments/$(expName)/debug_data.txt";
 
-  dataFile = "experiments/$(expName)/debug_data.txt"
-
-  RRTX(C, total_time, slice_time, 5.0, 100.0, changeThresh, algorithmName, MoveRobot, saveVideoData, saveTree, dataFile);
-  */
+  //RRTX(C, total_time, slice_time, 5.0, 100.0, changeThresh, algorithmName, MoveRobot, saveVideoData, saveTree, dataFile);
 }
 
 int main(){
