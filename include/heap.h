@@ -292,7 +292,6 @@ printPopAllHeap
 ###############################################################################
 # Use these functions instead if we want the heap to return the biggest thing #
 ###############################################################################
-
 # compares a node n with its parent, and switches them if the parent's
 # cost is less than the node's cost. Repeats if a switch happens.
 */
@@ -438,7 +437,3 @@ void testcase_heap();
 void testcaseB();
 
 #endif
-
-
-
-

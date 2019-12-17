@@ -6,6 +6,8 @@
 #include <vector>
 #define COUNT 10
 
+using std::vector; 
+
 template <typename T>
 class KDTreeNode{
     public:
@@ -33,20 +35,20 @@ class KDTree{
     int treeSize;                // the number of nodes in the KD-Tree
     int numWraps;                // the total number of dimensions that wrap
     std::vector<KDTreeNode<T>> tree;
-    int wraps[];           // a vector of length d containing a list of
+    vector<int> wraps;           // a vector of length d containing a list of
                             // all the dimensions that wrapAround
-    float wrapPoints[];  //check with professor // space is assumed to start at 0 and end at
+    vector<float> wrapPoints;  //check with professor // space is assumed to start at 0 and end at
                                 // wrapPoints[i] along dimension wraps[i]
     // Constructor
     KDTree(int darg, float (*distanceFunctionarg)(std::vector<float>, std::vector<float>),
-    int wrapsarg[], float wrapPointsarg[]){
+    vector<int> wrapsarg, vector<float> wrapPointsarg){
         std::vector<KDTreeNode<T>> H(64);
         tree = H;
         d = darg;
         distanceFunction = distanceFunctionarg;
         treeSize = 0;
         wraps = wrapsarg;
-        numWraps = (sizeof(wrapsarg)/sizeof(*wrapsarg)); //check with professor
+        numWraps = wrapsarg.size(); //check with professor
         wrapPoints = wrapPointsarg;        
     }
     // Override

@@ -84,7 +84,7 @@ void testcaseB(){
 
 /*
 int main(){
-    //testcase();
+    testcase_heap();
     testcaseB();
     return 0;
 }

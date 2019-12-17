@@ -211,6 +211,17 @@ class CSpace{
     }
 };
 
+// queue data structure used for RRTx
+template <typename A, typename B>
+class rrtXQueue{
+  public:  
+  BinaryHeap<A,B> Q;  // normal queue (sorted based on cost from goal)
+  List<A> OS;        // obstacle successor stack
+  CSpace<float> S;
+  float changeThresh;  // the threshold of local changes that we care about
+  rrtXQueue();
+};
+
 
 
 #endif

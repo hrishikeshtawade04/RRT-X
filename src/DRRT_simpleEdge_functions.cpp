@@ -84,13 +84,17 @@ void saturate(vector<float> &newPoint, vector<float> closestPoint, float delta){
 void testCase_sef(){
     vector<float> x{7,4,3};
     vector<float> y{17,6,2};
-    std::cout << Wdist(x,y) << std::endl;
-    std::cout << KDdist(x,y) << std::endl;
-    std::cout << dist(x,y) << std::endl;
+    cout << "Distance Calculation Points are" << endl;
+    cout << "[" << x[0] << "," << x[1] << "," << x[2] << "]" << endl;
+    cout << "[" << y[0] << "," << y[1] << "," << y[2] << "]" << endl;
+    std::cout << "Workspace Distance = " << Wdist(x,y) << std::endl;
+    std::cout << "KD Tree Distance = " << KDdist(x,y) << std::endl;
+    std::cout << "Standard Distance = " << dist(x,y) << std::endl;
 }
+
 /*
 int main(){
-    testCase();
+    testCase_sef();
     return 0;
 }
 */

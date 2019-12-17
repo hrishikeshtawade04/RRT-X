@@ -35,6 +35,7 @@ void testcase_kd(){
   std::pair <KDTreeNode<float>, float> nearestNode;
   std::vector<float> queryPoint{10,31};
   nearestNode = kdFindNearest(tree, queryPoint);
+  cout << "Query Node = " << "10, 31" << endl;
   cout << "Nearest Node = " << nearestNode.first.position[0] << "," << nearestNode.first.position[1] << " and Dist = " << nearestNode.second << endl; 
   
 }

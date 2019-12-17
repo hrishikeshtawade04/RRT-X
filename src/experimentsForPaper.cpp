@@ -86,13 +86,14 @@ void Static_2D_Debug(){
 
   string dataFile = "experiments/$(expName)/debug_data.txt";
 
-  //RRTX(C, total_time, slice_time, 5.0, 100.0, changeThresh, algorithmName, MoveRobot, saveVideoData, saveTree, dataFile);
+  RRTX(C, total_time, slice_time, 5.0, 100.0, changeThresh, algorithmName, MoveRobot, saveVideoData, saveTree, dataFile);
 }
-
+/*
 int main(){
     Static_2D_Debug();
     return 0;
 }
+*/
 
 
 
