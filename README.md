@@ -13,6 +13,12 @@ Michael Otte and Emilio Frazzoli
 - The code was initially written in the Julia language (http://julialang.org/) by Professor Michael Otte. 
 - Sharan Nayak worked on making it compatible to newer Julia versions (https://gitlab.com/Otte-Lab) 
 
-This repository contains the C++ version of the code developed by me. The goal is to create ROS package for RRTX
-and implement on a turtlebot or create visualizations on MATLAB.  
+This repository contains the C++ version of the code developed by me. Following is the instruction to compile.
+```
+g++ -std=c++11  -I../include list.cpp -o lit
+g++ -std=c++11  -I../include heap.cpp -o heap
+g++ -std=c++11  -I../include kdtree_general.cpp -o kdtree
+g++ -std=c++11  -I../include DRRT_simpleEdge_functions.cpp DRRT_distance_functions.cpp -o simplef
+g++ -std=c++11  -I../include DRRT_* list.cpp heap.cpp kdTree_general.cpp experimentsForPaper.cpp -o rrtx
+```
 
