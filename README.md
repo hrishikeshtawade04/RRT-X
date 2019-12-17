@@ -13,7 +13,7 @@ Michael Otte and Emilio Frazzoli
 - The code was initially written in the Julia language (http://julialang.org/) by Professor Michael Otte. 
 - Sharan Nayak worked on making it compatible to newer Julia versions (https://gitlab.com/Otte-Lab) 
 
-This repository contains the C++ version of the code developed by me. Following is the instruction to compile.
+This repository contains the C++ version of the code developed by me. Following is the instruction to compile. You will have to uncomment the main of the particular file you want to run and then execute the suitable compilation code for it. 
 ```
 g++ -std=c++11  -I../include list.cpp -o lit
 g++ -std=c++11  -I../include heap.cpp -o heap
