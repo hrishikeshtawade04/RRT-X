@@ -211,6 +211,7 @@ class CSpace{
     }
 };
 
+/*
 // queue data structure used for RRTx
 template <typename A, typename B>
 class rrtXQueue{
@@ -221,7 +222,7 @@ class rrtXQueue{
   float changeThresh;  // the threshold of local changes that we care about
   rrtXQueue();
 };
-
+*/
 
 
 #endif

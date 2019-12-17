@@ -89,7 +89,7 @@ void RRTX(TS S, float total_planning_time, float slice_time,
     
 
     // only writing here RRTX searchtype
-    rrtXQueue<RRTNode<float>, vector<float>> Q;
+    //rrtXQueue<RRTNode<float>, vector<float>> Q;
     //Q.Q = BinaryHeap{RRTNode{Float64}, typeof((Float64, Float64))}(keyQ, lessQ, greaterQ, markQ, unmarkQ, markedQ, setIndexQ, unsetIndexQ, getIndexQ)
     //Q.OS = JList{RRTNode{Float64}}()
     //Q.S = S

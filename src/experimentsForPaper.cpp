@@ -26,6 +26,8 @@ using std::ofstream;
 
 void Static_2D_Debug(){
 
+  cout << "Starting the RRTX Algorithm" << endl;
+
   string algorithmName = "RRTx";  // this is the algorithm to run, valid options are:
                          // "RRT", "RRT*", "RRT//", and "RRTx"
 
@@ -43,7 +45,9 @@ void Static_2D_Debug(){
 
   ofstream expFile;
   //obstacleFile = "environments/empty.txt"
+  cout << "Creating experiment folder" << endl;
   system("MD experiments");
+  cout << "Opening the file to store experiment data" << endl;
   expFile.open("experiments/" + expName + ".txt");
   
   bool MoveRobot = false;
@@ -55,10 +59,11 @@ void Static_2D_Debug(){
 
   vector<float> lowerBounds(d,-envRad);
   vector<float> upperBounds(d,envRad);
-  cout << lowerBounds.size() << " " << lowerBounds[0] << lowerBounds[1] << endl; 
   
-    
+  cout << "Creating Cspace" << endl;    
   CSpace<float> C(d, -1.0, lowerBounds, upperBounds, start, goal);
+  cout << "Lower Bounds of C-space = " << "[ " << lowerBounds[0] << " , " << lowerBounds[1] << " ]" << endl; 
+  cout << "Upper Bounds of C-space = " << "[ " << upperBounds[0] << " , " << upperBounds[1] << " ]" << endl;
 
   // init robot radii
   C.robotRadius =  robotRad;
@@ -67,7 +72,8 @@ void Static_2D_Debug(){
   C.robotVelocity = 2.0;
 
   string obstacleFile = "environments/rand_Static.txt";
-
+  
+  cout << "Loading Circular Obstacle" << endl;
   // load obstacles
   vector<float> obstaclePosition{10,30};
   Obstacle ob(1,obstaclePosition,0.5);
@@ -75,6 +81,7 @@ void Static_2D_Debug(){
   ob.obstacleUnusedAfterSense = false;
   ob.obstacleUnused = false;
   listPush(C.obstacles,ob);
+  cout << "Obstacle loaded" << endl;
   
  
   // set up sampling function
@@ -85,15 +92,15 @@ void Static_2D_Debug(){
   C.spaceHasTheta = false;
 
   string dataFile = "experiments/$(expName)/debug_data.txt";
-
-  RRTX(C, total_time, slice_time, 5.0, 100.0, changeThresh, algorithmName, MoveRobot, saveVideoData, saveTree, dataFile);
+   cout << "Executing RRTX" << endl;
+  //RRTX(C, total_time, slice_time, 5.0, 100.0, changeThresh, algorithmName, MoveRobot, saveVideoData, saveTree, dataFile);
 }
-/*
+
 int main(){
     Static_2D_Debug();
     return 0;
 }
-*/
+
 
 
 
